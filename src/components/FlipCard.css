@@ -1,0 +1,77 @@
+.flip-card {
+  background-color: transparent;
+  width: 280px;
+  height: 280px;
+  perspective: 1000px;  /* gives 3D depth */
+  cursor: pointer;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  border-radius: 16px;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front & back share same styling */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;  /* hides the side turned away */
+  border-radius: 16px;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Front side styling */
+.flip-card-front {
+  background: linear-gradient(135deg, #1e1e2f, #2a2a3a);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.flip-card-front h3 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* Back side styling */
+.flip-card-back {
+  background: linear-gradient(135deg, #2a2a3a, #1e1e2f);
+  color: #e0e0e0;
+  transform: rotateY(180deg);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.flip-card-back p {
+  margin: 0;
+}
+
+/* Make cards responsive */
+@media (max-width: 768px) {
+  .flip-card {
+    width: 240px;
+    height: 260px;
+  }
+  .flip-card-front h3 {
+    font-size: 1.2rem;
+  }
+  .flip-card-back p {
+    font-size: 0.85rem;
+  }
+}
